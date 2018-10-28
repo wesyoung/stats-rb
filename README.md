@@ -1,2 +1,2 @@
-# stats-rb
-simple ruby lib for stats
+# indicator-rb
+Ruby Indicator Extensions
