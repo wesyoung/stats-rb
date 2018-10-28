@@ -1,4 +1,4 @@
-def bayesian_estimate(i1, i2)
+def bayesian_estimate2(i1, i2)
   s = Time.now
   first_count = i1.count
   h = i1.map{|ii| [ii.indicator, true] }.to_h
