@@ -1,29 +1,32 @@
 require 'percentage'
 require 'descriptive_statistics'
 
-def bayesian_estimate2(i1, i2)
-  s = Time.now
-  first_count = i1.count
-  h = i1.map{|ii| [ii.indicator, true] }.to_h
-  second_count = i2.count
+
+def bayesian_estimate(a1, a2)
+  count1 = a1.count
+  count2 = a2.count
 
   overlap = 0
-  i2.each do |i|
-    if h.has_key?(i.indicator)
-      overlap += 1
-    end
+  a2.each do |e|
+    overlap += 1 if a1.include? e
   end
 
   return nil unless overlap > 2
 
-  population = (second_count - 1) * ( first_count ) / (overlap - 2)
-  begin
-    dev = ((second_count - 1) * (first_count - 1) * (first_count - overlap + 1) * (first_count - second_count + 1)) / ((overlap - 2) * (overlap - 2) * (overlap - 3))
-  rescue ZeroDivisionError
-    dev = 0
-  end
+  dev = 0
+  population = (count2 - 1) * ( count1 ) / (overlap - 2)
 
-  dev = Math.sqrt(dev.abs)
+  divisor = (overlap - 2) * (overlap - 2) * (overlap - 3)
+  if divisor > 0
+    dev = (
+      (count2 - 1) *
+      (count1 - 1) *
+      (count1 - overlap + 1) *
+      (count1 - count2 + 1)
+    ) / divisor
+
+    dev = Math.sqrt(dev.abs)
+  end
 
   [population, dev]
 end

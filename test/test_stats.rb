@@ -18,4 +18,9 @@ class TestStats < Minitest::Test
     assert [1, 1, 1, 1, 1, 1, 1].percentile_rank(2) == 100
   end
 
+
+  def test_bayesian
+    assert bayesian_estimate([1,2,3,4,5],[1,2,3,3,4,5,6,67,999]) == [10, 0.0]
+  end
+
 end
