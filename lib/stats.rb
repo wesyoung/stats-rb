@@ -1,3 +1,6 @@
+require 'percentage'
+require 'descriptive_statistics'
+
 def bayesian_estimate2(i1, i2)
   s = Time.now
   first_count = i1.count

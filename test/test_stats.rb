@@ -14,6 +14,8 @@ class TestStats < Minitest::Test
     assert [50, 100].percent_change == 100
 
     assert [50, 75].percent_change == 50.0
+
+    assert [1, 1, 1, 1, 1, 1, 1].percentile_rank(2) == 100
   end
 
 end

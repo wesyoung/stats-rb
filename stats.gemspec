@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
       'http://github.com/wesyoung/stats-rb'
   s.license       = 'MPL2'
 
-  %w(percentage descriptive_statistics levenshtein).each do |d|
+  %w(percentage descriptive_statistics).each do |d|
     s.add_runtime_dependency d
   end
 end
