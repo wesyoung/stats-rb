@@ -73,10 +73,21 @@ class Array
   include Percentrank
 
   def sum
-    inject(0.0) { |result, el| result + el }
+    inject(0) { |result, el| result + el }
   end
 
   def mean
+    sum / size
+  end
+
+  def sum2
+    inject(0) { |result, el| result + el }
+  end
+
+  def mean2
+    if size == 0
+      return 0
+    end
     sum / size
   end
 end
