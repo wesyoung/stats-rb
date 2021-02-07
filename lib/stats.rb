@@ -77,6 +77,7 @@ class Array
   end
 
   def mean
+    return 0 if size == 0
     sum / size
   end
 
@@ -85,9 +86,7 @@ class Array
   end
 
   def mean2
-    if size == 0
-      return 0
-    end
+    return 0 if size == 0
     sum / size
   end
 end
